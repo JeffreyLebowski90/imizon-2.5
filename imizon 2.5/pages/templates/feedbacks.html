@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="card">
+  <h5 class="card-header">Transaction #0000011112222</h5>
+  <div class="card-body">
+    <h5 class="card-title">Please give your feedback after testing your product on field</h5>
+    <br>
+    <div class="form-row">
+    	<div class="form-group col-3">
+    		<h6 style="margin-bottom: 20px; margin-top: 5px;">Performance</h6><br>
+    		<h6 style="margin-bottom: 20px;">Quality</h6><br>
+    		<h6 style="margin-bottom: 20px;">Delivery</h6><br>	
+    	</div>
+    	<div class="form-group col-2" style="min-width: 200px;">
+			<fieldset class="rating1" style="margin-bottom: 25px; margin-top: 10px;">
+				<input type="radio" id="star5" name="rating1" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+				<input type="radio" id="star4" name="rating1" value="4" /><label class = "full" for="star4" title="Very good - 4 stars"></label>
+				<input type="radio" id="star3" name="rating1" value="3" /><label class = "full" for="star3" title="Good - 3 stars"></label>
+				<input type="radio" id="star2" name="rating1" value="2" /><label class = "full" for="star2" title="Bad - 2 stars"></label>
+				<input type="radio" id="star1" name="rating1" value="1" /><label class = "full" for="star1" title="Terrible - 1 star"></label>
+			</fieldset>
+			<fieldset class="rating2" style="margin-bottom: 25px;">
+					<input type="radio" id="star10" name="rating2" value="10" /><label class = "full" for="star10" title="Awesome - 5 stars"></label>
+					<input type="radio" id="star9" name="rating2" value="9" /><label class = "full" for="star9" title="Very good - 4 stars"></label>
+					<input type="radio" id="star8" name="rating2" value="8" /><label class = "full" for="star8" title="Good - 3 stars"></label>
+					<input type="radio" id="star7" name="rating2" value="7" /><label class = "full" for="star7" title="Bad - 2 stars"></label>
+					<input type="radio" id="star6" name="rating2" value="6" /><label class = "full" for="star6" title="Terrible - 1 star"></label>
+			</fieldset>
+			<fieldset class="rating3" style="margin-bottom: 25px;">
+					<input type="radio" id="star15" name="rating3" value="15" /><label class = "full" for="star15" title="Awesome - 5 stars"></label>
+					<input type="radio" id="star14" name="rating3" value="14" /><label class = "full" for="star14" title="Very good - 4 stars"></label>
+					<input type="radio" id="star13" name="rating3" value="13" /><label class = "full" for="star13" title="Good - 3 stars"></label>
+					<input type="radio" id="star12" name="rating3" value="12" /><label class = "full" for="star12" title="Bad - 2 stars"></label>
+					<input type="radio" id="star11" name="rating3" value="11" /><label class = "full" for="star11" title="Terrible - 1 star"></label>
+			</fieldset>
+    	</div>
+		<div class="form-group col-5">
+			<input type="text" class="form-control" placeholder="Please give a brief evaluation ..."><br>
+			<input type="text" class="form-control" placeholder="Please give a brief evaluation ..."><br>
+			<input type="text" class="form-control" placeholder="Please give a brief evaluation ..."><br>
+    	</div>
+    </div>
+    <a href="thankyou" class="btn btn-primary">Submit</a>
+  </div>
+</div>
+
+{% endblock %}
+<!-- 
+
+    <div  style="text-align: center;">
+        <a href="#" class="btn btn-primary" style="text-align: center;">Send</a>
+    </div>
+ -->

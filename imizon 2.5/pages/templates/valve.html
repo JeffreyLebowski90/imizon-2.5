@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br/>
+<form method="POST"> {% csrf_token %}
+  <div class="form-row" style="margin: 0px;">
+    <div class="form-group col-xl-4" style="padding-left: 20px; padding-right: 20px;">
+      {% for field in zipped %}
+        {% if forloop.counter0 <= 7 %}
+          <div class="animated fadeInUp paramz" style="height: 32px;">{{field.0}} </div>
+            <button type="button" class="btn {{ field.2 }} dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 330px;">{{field.1}}</button>
+        {% endif %}
+      {% endfor %}
+    </div>  
+    <div class="form-group col-xl-4" style="padding-left: 20px; padding-right: 20px;">
+      {% for field in zipped %}
+        {% if forloop.counter0 >= 8 %}
+          <div class="animated fadeInUp paramz" style="height: 32px;">{{field.0}} </div>
+            <button type="button" class="btn {{ field.2 }} dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 330px;">{{field.1}}</button>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="form-group col-xl-4" style="max-width: 400px; text-align: center;">
+      <div class="card">
+        <h5 class="card-header">{{buy_perc}} Matching</h5>
+        <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text" style="font-weight: bold;">Would you like to confirm?</p>
+        {% comment %} <a href="{% url 'download' %}">DOWNLOAD</a> {% endcomment %}
+        <a class="btn btn-success" href="/contact_" role="button" style="width: 200px;">Confirm</a>
+        <hr/>
+        <p class="card-text">Documentation download links:</p>
+        {% for key, value in downloads.items %}
+        <a class="btn btn-primary" href="download?id={{forloop.counter0}}" role="button" style="margin: 3px;">{{value}}</a>
+        {% comment %} <a href="download?id={{forloop.counter0}}">{{value}}</a> {% endcomment %}
+        <br/>        
+        {% endfor %}
+      </div>
+    </div>
+</form>
+{% endblock %}

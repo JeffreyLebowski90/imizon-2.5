@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row">
+	<div class="nonscrollmenu col-md-3">
+		<br>
+		<p style="visibility:hidden;"></p>
+		<p style="font: italic 16px/27px Ubuntu, serif;">Matching</p>
+		<br>
+		<form method="get">
+		{% for ob in valves %}
+			<p style="font: bold 28px/43px Ubuntu, serif;">{{ob.0}}</p>
+			<p style="font: bold 28px/43px Ubuntu, serif; color: {{ob.2}};">{{ob.1}}</p>
+			<button type="submit" name="buybtn" value="{{forloop.counter0}}" class="btn btn-primary btn-sm">Select</button>
+			<br>
+		{% endfor %}
+		</form>
+		<hr style="height:31pt; visibility:hidden;" />
+	</div>
+	<div class="scrollmenu col">
+		<br/>
+		{% for field in form %}
+			{% if forloop.counter == 8 %}
+					<p style="font: italic 16px/20px Ubuntu, serif;">B.Bonnet Material</p>
+				{% else %}
+					<p style="font: italic 16px/20px Ubuntu, serif;">{{field.label_tag}}</p>
+			{% endif %}			
+		{% endfor %}
+		<p style="width: 15px"></p>
+		<br>
+		{% for row in rows %}
+			{% for ob in row %}
+				{% if ob == "y" %}
+					<p class="animated jello"><img src="{% static 'check.png' %}" height="42" ></p>
+				{% elif ob == "n" %}
+					<p class="animated jello"><img src="{% static 'NOTcheck.png' %}" height="42" ></p>
+				{% endif %}
+			{% endfor %}
+			<br>
+		{% endfor %}
+	</div>
+	<div class="nonscrollmenu col-md-3">
+		<hr style="height:2pt; visibility:hidden;" />
+		<p style="font: italic 16px/27px Ubuntu, serif;">Shipping</p>
+		<p style="font: italic 16px/27px Ubuntu, serif;">Price</p>
+		<br>
+		{% for row in rows_price %}
+			{% for ob in row %}
+				<p style="font: bold 28px/43px Ubuntu, serif;">{{ob}}</p>
+			{% endfor %}
+			<br>
+		{% endfor %}
+		<hr style="height:31pt; visibility:hidden;" />
+	</div>
+</div>
+{% endblock %}
+
+<!-- 	{% for result in results %}
+		{% if result != '' %}
+			<div class="row" style="background-color:rgba(255, 255, 255, 0.8);">
+				<div class="col-md-2">
+					<h3>{{result}}</h3>
+				</div>
+				<div class="col-md-2">
+			  		<img src="{% static 'check.png' %}" height="42" >
+				</div>
+				<div class="col-md-2">
+			  		<img src="{% static 'check.png' %}" height="42" >
+				</div>
+				<div class="col-md-2">
+			  		<img src="{% static 'check.png' %}" height="42" >
+				</div>
+				<div class="col-md-2">
+			  		<img src="{% static 'check.png' %}" height="42" >
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %} -->
+
+
+<!-- 
+		{% for result in results %}
+			{% if result != '' %}
+			<p>{{result}}</p>
+				<p><img src="{% static 'check.png' %}" height="42" ></p>
+				<p><img src="{% static 'NOTcheck.png' %}" height="42" ></p>
+				<p><img src="{% static 'check.png' %}" height="42" ></p>
+				<p><img src="{% static 'NOTcheck.png' %}" height="42" ></p>
+				<p><img src="{% static 'check.png' %}" height="42" ></p>
+			{% endif %}
+		{% endfor %}
+ -->
+
+
+
+
+
+ {% extends 'base.html' %}
+
+{% block content %}
+</br>
+<form method="POST"> {% csrf_token %}
+  <div class="form-row">
+  <div class="form-group col-md-0">
+  </div>
+    <div class="form-group col-md-4">
+      {% for field in zipped %}
+        {% if forloop.counter0 <= 6 %}
+          <div class="animated fadeInUp paramz" style="height: 32px;">{{field.0}} </div>
+            <button type="button" class="btn {{ field.2 }} dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 400px;">{{field.1}}</button>
+        {% endif %}
+      {% endfor %}
+    </div>  
+    <div class="form-group col-md-0">
+    </div>
+    <div class="form-group col-md-4">
+      {% for field in zipped %}
+        {% if forloop.counter0 >= 7 %}
+          <div class="animated fadeInUp paramz" style="height: 32px;">{{field.0}} </div>
+            <button type="button" class="btn {{ field.2 }} dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 400px;">{{field.1}}</button>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="form-group col-md-2">
+      <div class="card">
+        <h5 class="card-header">{{buy_perc}} Matching</h5>
+        <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">Would you like to confirm?</p>
+        <a class="btn btn-success" href="/contact_" role="button" style="width: 180px;">Confirm</a>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

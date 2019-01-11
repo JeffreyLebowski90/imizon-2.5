@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+<div class="card">
+  <h5 class="card-header">Transaction #0000011112222</h5>
+  <div class="card-body">
+    <h5 class="card-title">Your selection is {{buy_perc}} matching</h5>
+    <p class="card-text">Do you need to contact vendor directly for additional clarifications?</p>
+    <p class="card-text">Any <strong>Clarification</strong> confirmed by <strong>Vendor's Reply</strong> will remain recorded
+      and will be an integral part of the transaction.</p>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked onclick="hide()">
+      <label class="form-check-label" for="exampleRadios1">
+        No
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" onclick="show()">
+      <label class="form-check-label" for="exampleRadios2">
+        Yes
+      </label>
+    </div>
+    <form id="myDIV" style="display: none;">
+      <br>
+      <div class="form-row">
+        <div class="col-sm">
+          <h3 style="color: black" class="animated fadeInUp">Clarifications</h3>
+          {% for i in "xxxxx" %}
+            <input type="text" class="form-control" placeholder="Please enter a query ... e.g. confirm final top color">
+          {% endfor %}
+        </div>
+        <div class="col-sm">
+          <h3 style="color: black" class="animated fadeInUp">Vendor's Replies</h3>
+          {% for i in "xxxxx" %}          
+            <input type="text" class="form-control" placeholder="Vendor's Reply" readonly>
+          {% endfor %}
+        </div>
+      </div>
+    </form>
+    <br>
+    <a href="/shipping" class="btn btn-primary">Confirm</a>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br/>
+<form method="POST"> {% csrf_token %}
+  <div class="form-row" style="margin: 0px;">
+    <div class="form-group col-xl-4" style="padding-left: 20px; padding-right: 20px;">
+      {% for field in zipped %}
+        {% if forloop.counter0 <= 7 %}
+          <div class="animated fadeInUp paramz" style="height: 32px;">{{field.0}} </div>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="width: 330px;">{{field.1}}</button>
+        {% endif %}
+      {% endfor %}
+    </div>  
+    <div class="form-group col-xl-4" style="padding-left: 20px; padding-right: 20px;">
+      {% for field in zipped %}
+        {% if forloop.counter0 >= 8 %}
+          <div class="animated fadeInUp paramz" style="height: 32px;">{{field.0}} </div>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="width: 330px;">{{field.1}}</button>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="form-group col-xl-4" style="max-width: 400px; text-align: center;">
+      <div class="card">
+        <h5 class="card-header">Shipping and Payment Summary</h5>
+        <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text" style="font-weight: bold; margin-bottom: 0px;">Total Price</p>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="width: 330px;">20000 €</button>
+        <p class="card-text" style="font-weight: bold; margin-bottom: 0px; margin-top: 10px;">Delivery</p>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="width: 330px;">1 week</button>
+        {% for ob in ship_zip  %}
+          <p  class="card-text" style="font-weight: bold; margin-bottom: 0px; margin-top: 10px;">{{ob.0}}</p>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="width: 330px;">{{ob.1}}</button>
+          <br/>    
+        {% endfor %}
+        <hr/>
+        <p class="card-text" style="font-weight: bold;">Would you like to confirm?</p>
+        <a class="btn btn-success" href="/terms" role="button" style="width: 200px;">Confirm</a>
+      </div>
+    </div>
+</form>
+{% endblock %}

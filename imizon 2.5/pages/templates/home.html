@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br/>
+<form method="POST"> {% csrf_token %}
+  <div class="form-row" style="margin: 0px;">
+    <div class="form-group col-xl-4" style="padding-left: 20px; padding-right: 20px;">
+      {% for field in form %}
+      {% if forloop.counter0 <= 7 %}
+          {{ field.errors }}
+          <div class="animated fadeInUp paramz">{{ field.label_tag }} </div>
+          {{ field }}
+          {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+          {% endif %}
+          {% endif %}
+      {% endfor %}
+      <p style="color: red; font-weight: bold; padding-top: 10px; margin-bottom: 0px;">BETA VERSION</p>
+      <p style="color: red; font-weight: bold;">Further fields will be available in the final version</p>
+    </div>  
+    <div class="form-group col-xl-4" style="padding-left: 20px; padding-right: 20px;">
+      {% for field in form %}
+      {% if forloop.counter0 >= 8 %}
+          {{ field.errors }}
+          <div class="animated fadeInUp paramz">{{ field.label_tag }} </div>
+          {{ field }}
+          {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+          {% endif %}
+          {% endif %}
+      {% endfor %}
+    </div>
+    <div class="form-group col-xl-4 indexCard" style="padding-left: 50px; text-align: center;">
+      <div class="card">
+        <h5 class="card-header">Result</h5>
+        <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">Fill in the form, then press Search</p>
+        <button type="submit" class="btn btn-success" style="width: 200px;">Search</button>
+      </div>
+    </div>
+</form>
+{% endblock %}
+
+<!-- class="mx-auto"  -->
+<!-- width: 850px;  -->

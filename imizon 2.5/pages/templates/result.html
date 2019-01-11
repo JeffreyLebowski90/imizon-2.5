@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<hr>
+<div class="row" style="min-width: 1000px; margin: 0px;">
+	<div class="col-5" style="padding-right: 0px; left: 1px;">
+		<div>
+			<table class="table table-hover table-dark">
+
+
+				<thead>
+				    <tr>
+						<th scope="col">Result</th>
+						<th scope="col">Matching</th>
+						<th scope="col"></th>
+						<th scope="col">Shipping</th>
+						<th scope="col">Price</th>
+				    </tr>
+				</thead>
+
+
+				<tbody>
+					<form method="get">
+					{% for ob in valves %}
+					    <tr>
+					      <th scope="row">{{ob.0}}</th>
+					      <td style="color: {{ob.4}}">{{ob.3}}</td>
+					      <td style="padding: 0px;"><button type="submit" name="buybtn" value="{{forloop.counter0}}" class="btn-sm btn-primary" style="height: 30px; line-height: 0; margin-top: 10px;">Select</button></td>
+						  <td>{{ob.1}}</td>
+						  <td>{{ob.2}}</td>
+					    </tr>
+					{% endfor %}
+					</form>
+				</tbody>
+
+
+			</table>
+		</div>
+	</div>
+	<div class="col-7" style="padding: 0px; padding-right: 20px;">
+		<div class="table-responsive">
+			<table class="table table-hover table-dark">
+
+				<thead>
+				    <tr>
+						{% for field in form %}
+							<th scope="col" style="min-width: 150px; line-height: 40px; padding: 0px;">{{field.label_tag}}
+							</th>
+						{% endfor %}
+				    </tr>
+				</thead>
+
+
+				<tbody>
+				{% for row in rows %}
+					<tr>
+					{% for ob in row %}
+						<td style="padding: 9px;" class="animated jello"><img height="30"
+						{% if ob == "y" %}
+							src="{% static 'check.png' %}"
+						{% elif ob == "n" %}
+							src="{% static 'NOTcheck.png' %}"
+						{% endif %}
+						></td>
+					{% endfor %}
+					</tr>
+				{% endfor %}
+				</tbody>
+
+
+			</table>
+		</div>
+	</div>
+	{% comment %} <div class="col-2" style="padding-left: 0px;">
+		<div>
+			<table class="table table-hover table-dark">
+
+
+				<thead>
+				    <tr>
+						<th scope="col">Shipping</th>
+						<th scope="col">Price</th>
+				    </tr>
+				</thead>
+
+
+				<tbody>
+				{% for row in rows_price %}
+					<tr>
+					{% for ob in row %}
+						<td>{{ob}}</td>
+					{% endfor %}
+					</tr>
+				{% endfor %}
+				</tbody>
+
+
+			</table>
+		</div>
+	</div> {% endcomment %}
+</div>
+
+<div id="react"></div>
+
+{% endblock %}

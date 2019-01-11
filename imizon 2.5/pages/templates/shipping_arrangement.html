@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+<div class="card">
+  <h5 class="card-header">Transaction #0000011112222</h5>
+  <div class="card-body">
+    <h5 class="card-title">Shipping Arrangement</h5>
+    <p class="card-text">Please select the shipping arrangement.</p>
+    <form method="POST">
+        {% for field in form %}
+            {{ field }} 
+        {% endfor %}            
+        <button class="btn btn-primary" type="submit">Submit</button>
+        {% csrf_token %}
+    </form>  
+    <form>
+      <br>
+      <div class="form-row">
+        <div class="col-sm">
+          <h3 style="color: black" class="animated fadeInUp">Clarifications</h3>
+          {% for i in "xxxxx" %}
+            <input type="text" class="form-control" placeholder="Please enter a query ...">
+          {% endfor %}
+        </div>
+        <div class="col-sm">
+          <h3 style="color: black" class="animated fadeInUp">Vendor's Replies</h3>
+          {% for i in "xxxxx" %}          
+            <input type="text" class="form-control" placeholder="Reply" readonly>
+          {% endfor %}
+        </div>
+      </div>
+    </form>
+    <br>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,4 @@
+cd C:\code\Scripts
+./activate
+cd C:\code\djangoproject\"imizon 2.5"
+python manage.py runserver

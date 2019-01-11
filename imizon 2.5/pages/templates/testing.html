@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block feedback %}
+  onload="timerFeedback()"
+{% endblock %}
+
+{% block content %}
+<hr>
+<div class="card">
+  <h5 class="card-header"></h5>
+  <div class="card-body" style="text-align: center;">
+    <div class="lds-circle"><div></div></div>
+    <h5 class="card-title">One week has passed and you received your product</h5>
+    <p  class="card-text">After mounting and testing it on field you are ready to <span style="color: red">give your feedback</span> on the equipment</p>
+    <br>
+  <br><br>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<hr>
+<div class="card">
+  <h5 class="card-header">Transaction #0000011112222</h5>
+  <div class="card-body">
+    <h5 class="card-title">Shipping</h5>
+    <p class="card-text">Please select the shipping method.</p>
+
+    <div class="row">
+      <div class="col-xl-4">
+      <form  action="." method="post" >{{my_form.as_p}}</form>
+      
+        {% comment %} {% for radio in my_form %}
+          <div>
+            {{ radio }}
+          </div>
+        {% endfor %} {% endcomment %}
+        {% comment %} {% for ob in shippings %}
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exam pleRadios" id="exampleRadios1" value="option1"
+            {% if forloop.counter == 1 %} checked {% endif %}>
+          <label class="form-check-label" for="exampleRadios1">
+            {{ob}}
+          </label>
+        </div>
+        {% endfor %} {% endcomment %}
+
+        <br/>
+      </div>
+      <div class="col-8">
+        <img height="370" src="{% static 'incoterms.png' %}">
+      </div>
+    </div>
+    <br>
+    <a href="{% url 'shipping_arrangement' %}" class="btn btn-primary">Submit</a>
+  </div>
+</div>
+
+{% endblock %}
